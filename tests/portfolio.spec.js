@@ -105,18 +105,28 @@ test('T10: roadmap controls reach the final phase and return to the first', asyn
   for (const phase of ['02 / 04', '03 / 04', '04 / 04']) {
     await next.click();
     await expect(count).toHaveText(phase);
+    await expect(page.locator('.stop[aria-current="step"]')).toHaveCount(1);
   }
   for (const phase of ['03 / 04', '02 / 04', '01 / 04']) {
     await previous.click();
     await expect(count).toHaveText(phase);
+    await expect(page.locator('.stop[aria-current="step"]')).toHaveCount(1);
   }
 });
 
 test('T11: axe reports no serious or critical accessibility violations', async ({ page }) => {
+  await page.addInitScript(() => localStorage.removeItem('theme'));
   await page.goto('/');
-  const results = await new AxeBuilder({ page }).analyze();
-  const serious = results.violations.filter((violation) => ['serious', 'critical'].includes(violation.impact ?? ''));
-  expect(serious).toEqual([]);
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'blue');
+  for (const theme of ['blue', 'paper']) {
+    if ((await page.locator('html').getAttribute('data-theme')) !== theme) {
+      await page.getByRole('button', { name: theme === 'paper' ? 'Switch to Paper theme' : 'Switch to Blue theme' }).click();
+      await expect(page.locator('html')).toHaveAttribute('data-theme', theme);
+    }
+    const results = await new AxeBuilder({ page }).analyze();
+    const serious = results.violations.filter((violation) => ['serious', 'critical'].includes(violation.impact ?? ''));
+    expect(serious).toEqual([]);
+  }
 });
 
 test('T12: cumulative layout shift stays below 0.1', async ({ page }) => {

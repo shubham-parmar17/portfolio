@@ -32,7 +32,7 @@ export default function App() {
     document.documentElement.dataset.theme = theme;
     try { localStorage.theme = theme; } catch {}
     const meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute('content', theme === 'blue' ? '#2F6FDE' : '#F5F6F8');
+    if (meta) meta.setAttribute('content', theme === 'blue' ? '#2038E8' : '#F5F6F8');
   }, [theme]);
 
   // smooth scroll, driven by GSAP's ticker so ScrollTrigger stays in sync
