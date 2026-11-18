@@ -1468,3 +1468,62 @@ dd {
   .routeFill { transform: scaleY(1); }
   .stop { opacity: 1 !important; }
 }
+
+/* Shared layout, typography and section rhythm. */
+body { font: 1.125rem/1.55 var(--text); }
+.wrap { padding-inline: var(--gutter); }
+.display { letter-spacing: -.04em; line-height: 1.05; }
+.subhead { text-transform: none; letter-spacing: 0; opacity: 1; color: var(--ink); margin-bottom: var(--space-3); }
+.hero { min-height: 88svh; background-size: 72px 72px; }
+.hero::before { opacity: .94; }
+.hero h1.display { max-width: 12ch; font-size: clamp(3.25rem, 8.2vw, 7.5rem); line-height: .98; }
+.heroFoot { gap: var(--space-8); margin-top: var(--space-8); }
+.heroFoot p { max-width: 58ch; font: 400 1.125rem/1.55 var(--text); }
+.badge, .heroBtn { border-radius: var(--radius-control); }
+.work, .journey, .skills, .education, .about, .contact { padding-block: var(--section-space); }
+.work { border-radius: 0; }
+.workHeader, .skillsHeader, .eduHeader { margin-bottom: var(--space-7); }
+.proj { border-radius: 0; padding-block: var(--space-6); }
+.projNum { color: #51545B; opacity: 1; }
+.projMark { border-radius: var(--radius-control); }
+.projTitle { transition: color var(--t-fast); }
+.projToggle:hover .projTitle { transform: none; }
+.projToggle:hover .projTitle, .projToggle:focus-visible .projTitle { color: var(--color-blue); }
+.tech { color: #3D4148; }
+.journey { padding-inline: 0; padding-block: 0; }
+.stop-3 .stopDot { color: var(--color-ink); }
+.skillsGrid { display: block; border-top: 1px solid var(--rule); }
+.skillCard { display: grid; grid-template-columns: minmax(180px, .65fr) 1fr; align-items: start; gap: var(--space-5); padding: var(--space-5) 0; border: 0; border-bottom: 1px solid var(--rule); border-radius: 0; background: transparent; }
+.skillCard:hover, .eduCard:hover { border-color: var(--rule); background: transparent; }
+.skillArea { display: block; }
+.skillIdx { display: none; }
+.skillArea h3 { font-size: 1.2rem; }
+.skillPill { border-radius: var(--radius-control); padding: var(--space-2) var(--space-3); }
+.eduCard { border-radius: var(--radius-media); background: transparent; }
+.about { gap: var(--space-8); }
+.aboutSub { max-width: 62ch; }
+.aboutSub p { margin-top: 0; }
+.contact { border-top: 1px solid var(--rule); }
+.contactTitle { font-size: clamp(2.6rem, 6vw, 5.5rem); }
+.heroBtn.primary:hover, .heroBtn.secondary:hover { transform: none; }
+.stopProof, .footLinks a { text-decoration-thickness: 1px; text-underline-offset: 4px; }
+
+@media (max-width: 899px) {
+  .about { grid-template-columns: 1fr; gap: var(--space-6); }
+}
+
+@media (max-width: 600px) {
+  .hero { min-height: 100svh; padding-top: 8rem; }
+  .hero h1.display { font-size: clamp(3.15rem, 14vw, 5.5rem); }
+  .heroFoot { grid-template-columns: 1fr; gap: var(--space-6); }
+  svg.sys { justify-self: start; max-width: 390px; }
+  .jHeader { align-items: flex-start; }
+  .jHeader h2 { font-size: clamp(2.5rem, 12vw, 4rem); }
+  .jControls { gap: var(--space-2); }
+  .jCount { font-size: .78rem; min-width: auto; }
+  .jArrow { width: 40px; height: 40px; }
+  .stopContent { padding: var(--space-3); }
+  .stopMeta { flex-direction: column; gap: var(--space-1); }
+  .skillCard { grid-template-columns: 1fr; gap: var(--space-3); }
+  .aboutHeader h2 { font-size: clamp(2.5rem, 12vw, 4rem); }
+}

@@ -123,7 +123,7 @@ export default function Journey() {
           <span className="routeMobile" aria-hidden="true"><span className="routeFill" /></span>
           <ol className="stops" aria-label="Learning milestones">
             {journey.map((item, index) => (
-              <li className={`stop jCard stop-${index + 1}${index === activeIndex ? ' is-active' : ''}`} key={item.year} data-at={index / (journey.length - 1)}>
+              <li className={`stop stop-${index + 1}${index === activeIndex ? ' is-active' : ''}`} key={item.year} data-at={index / (journey.length - 1)} aria-current={index === activeIndex ? 'step' : undefined}>
                 <span className="stopDot" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
                 <div className="stopContent">
                   <div className="stopMeta"><span>{item.year}</span><span>{item.highlight}</span></div>
