@@ -1,0 +1,2 @@
+- B01: Updated README Journey wording to match its native horizontal rail.
+- B02: Raised the scrubbed-word starting opacity to preserve readable contrast on the blue theme.
